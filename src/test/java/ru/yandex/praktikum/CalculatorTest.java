@@ -9,7 +9,12 @@ import static org.junit.Assert.assertEquals;
 class Calculator {
 
     public int sum(int a, int b) {
+
         return a + b;
+    }
+
+    public int multi(int c, int d) {
+        return c * d;
     }
 }
 
@@ -27,10 +32,17 @@ public class CalculatorTest { // создали тестовый класс
     }
 
     @Parameterized.Parameters
-    public static Object[] getSumData() {
+//    public static Object[] getSumData() {
+//        return new Object[][]{
+//                {1, 9, 10},
+//                {1, 0, 1}, // передали тестовые данные
+//        };
+//    }
+
+    public static Object[] getMultiData() {
         return new Object[][] {
-                { 1, 9, 10},
-                { 1, 0, 1}, // передали тестовые данные
+                {2, 8, 16},
+                {10, 10, 100},
         };
     }
 
@@ -39,5 +51,12 @@ public class CalculatorTest { // создали тестовый класс
         Calculator calculator = new Calculator();
         int actual = calculator.sum(firstNumber, secondNumber); // обратились к полям тестового класса
         assertEquals(expected, actual); // сравнили ожидаемый и фактический результат
+    }
+
+    @Test
+    public void shouldBeMulti() {
+        Calculator calculator = new Calculator();
+        int actual = calculator.multi(firstNumber, secondNumber);
+        assertEquals(expected, actual);
     }
 }
